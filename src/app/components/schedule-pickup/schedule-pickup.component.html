@@ -1,0 +1,48 @@
+<div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-xl font-bold mb-4">Schedule Waste Pickup</h2>
+  
+    <!-- Community Pickup Times -->
+    <div class="bg-green-100 p-4 rounded-md mb-4">
+      <h3 class="font-semibold">Community Pickup Schedule:</h3>
+      <p *ngIf="community">{{ community.pickupTime }}</p>
+      <p *ngIf="!community" class="text-red-500">No community selected!</p>
+    </div>
+  
+    <!-- Schedule Form -->
+    <form (submit)="schedulePickup()">
+      <label class="block mb-2">Select Date:</label>
+      <input type="date" [(ngModel)]="selectedDate" name="date" class="w-full px-4 py-2 border rounded-md" required />
+  
+      <label class="block mt-4 mb-2">Select Time:</label>
+      <input type="time" [(ngModel)]="selectedTime" name="time" class="w-full px-4 py-2 border rounded-md" required />
+  
+      <label class="block mt-4 mb-2">Select Waste Type:</label>
+      <div class="space-y-2">
+        <label class="flex items-center">
+          <input type="checkbox" [(ngModel)]="wasteTypes.household" name="household" class="mr-2" />
+          Household Waste
+        </label>
+        <label class="flex items-center">
+          <input type="checkbox" [(ngModel)]="wasteTypes.recyclable" name="recyclable" class="mr-2" />
+          Recyclable Waste
+        </label>
+        <label class="flex items-center">
+          <input type="checkbox" [(ngModel)]="wasteTypes.paperPlasticAluminium" name="ppa" class="mr-2" />
+          Paper/Plastic/Aluminium
+        </label>
+        <label class="flex items-center">
+          <input type="checkbox" [(ngModel)]="wasteTypes.hazardous" name="hazardous" class="mr-2" />
+          Hazardous Waste
+        </label>
+      </div>
+  
+      <button type="submit" class="w-full mt-6 bg-green-500 text-white py-2 rounded-md hover:bg-green-600">
+        Confirm Pickup
+      </button>
+    </form>
+  
+    <!-- Confirmation & Error Messages -->
+    <p *ngIf="successMessage" class="text-green-600 mt-4">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="text-red-500 mt-4">{{ errorMessage }}</p>
+  </div>
+  

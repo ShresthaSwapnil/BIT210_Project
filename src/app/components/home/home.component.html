@@ -1,0 +1,52 @@
+<div class="p-6">
+    <h1 class="text-2xl font-bold mb-4">Dashboard Overview</h1>
+  
+    <!-- Total Pickups -->
+    <div class="bg-green-100 p-4 rounded-lg mb-6 shadow-md">
+      <h2 class="text-lg font-semibold">Total Pickups: {{ totalPickups }}</h2>
+    </div>
+  
+    <!-- Waste Type Distribution Chart -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold mb-2">Waste Type Distribution</h2>
+      <ngx-charts-bar-vertical
+        [view]="view"
+        [results]="wasteTypeData"
+        [gradient]="gradient"
+        [xAxis]="showXAxis"
+        [yAxis]="showYAxis"
+        [legend]="showLegend"
+        [showXAxisLabel]="showXAxisLabel"
+        [showYAxisLabel]="showYAxisLabel"
+        [xAxisLabel]="xAxisLabel"
+        [yAxisLabel]="yAxisLabel">
+      </ngx-charts-bar-vertical>
+    </div>
+  
+    <!-- Recent Pickups Table -->
+    <div>
+      <h2 class="text-xl font-semibold mb-2">Recent Pickups</h2>
+      <table class="w-full border-collapse border border-gray-300">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border px-4 py-2">Community</th>
+            <th class="border px-4 py-2">Date</th>
+            <th class="border px-4 py-2">Time</th>
+            <th class="border px-4 py-2">Waste Types</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pickup of pickupData">
+            <td class="border px-4 py-2">{{ pickup.community }}</td>
+            <td class="border px-4 py-2">{{ pickup.date }}</td>
+            <td class="border px-4 py-2">{{ pickup.time }}</td>
+            <td class="border px-4 py-2">{{ pickup.wasteTypes }}</td>
+          </tr>
+          <tr *ngIf="pickupData.length === 0">
+            <td class="border px-4 py-2 text-center" colspan="4">No pickups recorded yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

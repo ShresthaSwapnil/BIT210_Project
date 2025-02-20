@@ -4,7 +4,7 @@
     <nav class="flex-grow">
       <ul class="mt-4">
         <li *ngFor="let link of links">
-          <a [routerLink]="link.path" class="block px-6 py-3 hover:bg-green-700 transition">
+          <a [routerLink]="link.path" routerLinkActive="bg-green-700" class="block px-6 py-3 hover:bg-green-700 transition">
             {{ link.label }}
           </a>
         </li>

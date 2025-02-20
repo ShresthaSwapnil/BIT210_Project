@@ -10,12 +10,12 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class SidebarComponent {
   links = [
-    { label: 'Dashboard', path: '/dashboard' },
-    { label: 'Schedule Pickup', path: '/schedule' },
-    { label: 'Report Issues', path: '/report' },
-    { label: 'Pickup History', path: '/history' },
-    { label: 'Notifications', path: '/notifications' },
-    { label: 'Reports', path: '/reports' }
+    { label: 'Dashboard', path: '/dashboard/home' },
+    { label: 'Schedule Pickup', path: '/dashboard/schedule' },
+    { label: 'Report Issues', path: '/dashboard/report' },
+    { label: 'Pickup History', path: '/dashboard/history' },
+    { label: 'Notifications', path: '/dashboard/notifications' },
+    { label: 'Reports', path: '/dashboard/reports' }
   ];
 
   constructor(private router: Router) {}

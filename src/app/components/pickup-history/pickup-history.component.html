@@ -1,0 +1,64 @@
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Pickup History</h2>
+  
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 mb-4">
+      <div>
+        <label class="block mb-1">Start Date:</label>
+        <input type="date" [(ngModel)]="filters.startDate" class="px-4 py-2 border rounded-md" />
+      </div>
+  
+      <div>
+        <label class="block mb-1">End Date:</label>
+        <input type="date" [(ngModel)]="filters.endDate" class="px-4 py-2 border rounded-md" />
+      </div>
+  
+      <div>
+        <label class="block mb-1">Waste Type:</label>
+        <select [(ngModel)]="filters.wasteType" class="px-4 py-2 border rounded-md">
+          <option value="">All</option>
+          <option value="household">Household Waste</option>
+          <option value="recyclable">Recyclable Waste</option>
+          <option value="paperPlasticAluminium">Paper/Plastic/Aluminium</option>
+          <option value="hazardous">Hazardous Waste</option>
+        </select>
+      </div>
+  
+      <button (click)="applyFilters()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+        Apply Filters
+      </button>
+    </div>
+  
+    <!-- Table -->
+    <table class="w-full border-collapse border border-gray-300 mb-6">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border px-4 py-2">Date</th>
+          <th class="border px-4 py-2">Time</th>
+          <th class="border px-4 py-2">Waste Types</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pickup of filteredPickups">
+          <td class="border px-4 py-2">{{ pickup.date }}</td>
+          <td class="border px-4 py-2">{{ pickup.time }}</td>
+          <td class="border px-4 py-2">{{ pickup.wasteTypes.join(', ') }}</td>
+        </tr>
+        <tr *ngIf="filteredPickups.length === 0">
+          <td colspan="3" class="text-center py-4">No pickups found for the selected filters.</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Chart -->
+    <ngx-charts-pie-chart
+      [results]="chartData"
+      [legend]="true"
+      [doughnut]="false"
+      [explodeSlices]="false"
+      [labels]="true"
+      [gradient]="false"
+      [view]="[700,400]">
+    </ngx-charts-pie-chart>
+  </div>
+  

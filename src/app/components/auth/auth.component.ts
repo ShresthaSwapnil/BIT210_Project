@@ -36,13 +36,14 @@ export class AuthComponent implements OnInit {
 
   handleSubmit(): void {
     if (this.isLogin) {
+      // Login Logic
       if (this.authService.login(this.email, this.password)) {
-        console.log("Success")
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = 'Invalid credentials!';
       }
     } else {
+      // Registration Logic
       if (this.community === 'other') {
         if (!this.communityService.isCommunityExists(this.newCommunityName)) {
           this.communityService.addCommunity({
@@ -50,20 +51,25 @@ export class AuthComponent implements OnInit {
             address: this.newCommunityAddress,
             pickupTime: this.pickupTime,
           });
+  
+          // Update community list after adding a new one
+          this.communities = this.communityService.getCommunities();
+  
+          // Auto-select the new community
           this.community = this.newCommunityName;
         } else {
           this.errorMessage = 'Community already exists!';
           return;
         }
       }
-
+  
       const response = this.authService.register({
         username: this.username,
         email: this.email,
         password: this.password,
         community: this.community,
       });
-
+  
       if (response === 'success') {
         this.isLogin = true;
         this.errorMessage = '';

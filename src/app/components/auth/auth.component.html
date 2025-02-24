@@ -12,6 +12,7 @@
             <option *ngFor="let com of communities" [value]="com.name">{{ com.name }}</option>
             <option value="other">Other (Admin Entry)</option>
           </select>
+
   
           <div *ngIf="community === 'other'">
             <label class="block mt-4 mb-2">Community Name:</label>

@@ -1,0 +1,32 @@
+<div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-xl font-bold mb-4">Report an Issue</h2>
+    <form #issueForm="ngForm" (ngSubmit)="submitIssue(issueForm)">
+      <label class="block mb-2">Issue Type:</label>
+      <select class="w-full px-4 py-2 border rounded-md" name="issueType" [(ngModel)]="issueType" required>
+        <option value="">Select an issue type</option>
+        <option value="missedPickup">Missed Pickup</option>
+        <option value="overflowingBin">Overflowing Bin</option>
+        <option value="illegalDumping">Illegal Dumping</option>
+      </select>
+  
+      <label class="block mt-4 mb-2">Location:</label>
+      <input type="text" class="w-full px-4 py-2 border rounded-md" name="location" [(ngModel)]="location" required />
+  
+      <label class="block mt-4 mb-2">Description:</label>
+      <textarea class="w-full px-4 py-2 border rounded-md" name="description" [(ngModel)]="description" required></textarea>
+  
+      <label class="block mt-4 mb-2">Additional Comments:</label>
+      <textarea class="w-full px-4 py-2 border rounded-md" name="comments" [(ngModel)]="comments"></textarea>
+  
+      <label class="block mt-4 mb-2">Upload Photo:</label>
+      <input type="file" (change)="onFileChange($event)" class="w-full border rounded-md" />
+  
+      <button type="submit" [disabled]="issueForm.invalid" class="w-full mt-6 bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600">
+        Submit Report
+      </button>
+    </form>
+  
+    <p *ngIf="successMessage" class="text-green-600 mt-4">{{ successMessage }}</p>
+    <p *ngIf="errorMessage" class="text-red-500 mt-4">{{ errorMessage }}</p>
+  </div>
+  

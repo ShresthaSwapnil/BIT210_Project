@@ -1,0 +1,27 @@
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Notifications</h2>
+  
+    <div *ngIf="notifications.length === 0" class="text-gray-500">No notifications available.</div>
+  
+    <ul class="space-y-4">
+      <li *ngFor="let notification of notifications" class="p-4 border rounded-md bg-gray-100">
+        <p class="font-semibold">{{ notification.message }}</p>
+        <p class="text-sm text-gray-500">{{ notification.date | date:'medium' }}</p>
+        <span class="text-sm px-2 py-1 rounded-md" 
+              [ngClass]="{'bg-blue-500 text-white': notification.type === 'reminder', 
+                          'bg-green-500 text-white': notification.type === 'announcement'}">
+          {{ notification.type === 'reminder' ? 'Reminder' : 'Announcement' }}
+        </span>
+      </li>
+    </ul>
+  
+    <!-- Admin Section -->
+    <div *ngIf="isAdmin" class="mt-6 p-4 bg-gray-200 rounded-lg">
+      <h3 class="text-lg font-semibold mb-2">Broadcast Announcement</h3>
+      <textarea [(ngModel)]="announcementText" class="w-full px-4 py-2 border rounded-md"></textarea>
+      <button (click)="broadcastAnnouncement()" class="mt-2 px-6 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
+        Send Announcement
+      </button>
+    </div>
+  </div>
+  

@@ -6,6 +6,8 @@ import { SchedulePickupComponent } from './components/schedule-pickup/schedule-p
 import { HomeComponent } from './components/home/home.component';
 import { ReportIssuesComponent } from './components/report-issues/report-issues.component';
 import { PickupHistoryComponent } from './components/pickup-history/pickup-history.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { ReportsComponent } from './components/reports/reports.component';
 
 export const routes: Routes = [
     {path:'', component:LandingComponent},
@@ -15,7 +17,9 @@ export const routes: Routes = [
             {path:'',redirectTo: 'home', pathMatch: 'full' },
             {path:'home',component:HomeComponent},
             {path:'schedule',component:SchedulePickupComponent},
-            {path:'report',component:ReportIssuesComponent},
+            {path:'report-issues',component:ReportIssuesComponent},
             {path:'history',component:PickupHistoryComponent},
+            {path:'notifications',component:NotificationsComponent},
+            {path:'reports',component:ReportsComponent},
         ]},
 ];

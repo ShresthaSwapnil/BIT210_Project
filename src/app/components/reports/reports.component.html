@@ -1,0 +1,68 @@
+<div class="max-w-5xl mx-auto p-6 bg-white rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Reports</h2>
+  
+    <!-- Report Type Selection -->
+    <label class="block mb-2">Select Report Type:</label>
+    <select [(ngModel)]="selectedReport" (change)="generateReport()" class="px-4 py-2 border rounded-md mb-4">
+      <option value="pickupStatus">Pickup Status</option>
+      <option value="issueReported">Issues Reported</option>
+      <option value="recyclingRates">Recycling Rates</option>
+    </select>
+  
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-4 mb-4">
+      <div>
+        <label class="block mb-1">Start Date:</label>
+        <input type="date" [(ngModel)]="filters.startDate" class="px-4 py-2 border rounded-md" />
+      </div>
+  
+      <div>
+        <label class="block mb-1">End Date:</label>
+        <input type="date" [(ngModel)]="filters.endDate" class="px-4 py-2 border rounded-md" />
+      </div>
+  
+      <div>
+        <label class="block mb-1">Waste Type:</label>
+        <select [(ngModel)]="filters.wasteType" class="px-4 py-2 border rounded-md">
+          <option value="">All</option>
+          <option value="household">Household Waste</option>
+          <option value="recyclable">Recyclable Waste</option>
+          <option value="paperPlasticAluminium">Paper/Plastic/Aluminium</option>
+          <option value="hazardous">Hazardous Waste</option>
+        </select>
+      </div>
+  
+      <button (click)="applyFilters()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+        Apply Filters
+      </button>
+    </div>
+  
+    <!-- Table -->
+    <table class="w-full border-collapse border border-gray-300 mb-6">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="border px-4 py-2" *ngFor="let header of tableHeaders">{{ header }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let row of tableData">
+          <td class="border px-4 py-2" *ngFor="let key of tableKeys">{{ row[key] }}</td>
+        </tr>
+        <tr *ngIf="tableData.length === 0">
+          <td [attr.colspan]="tableHeaders.length" class="text-center py-4">No data available for the selected filters.</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Chart -->
+    <ngx-charts-bar-vertical
+      [results]="chartData"
+      [xAxis]="true"
+      [yAxis]="true"
+      [legend]="true"
+      [showDataLabel]="true"
+      [gradient]="false"
+      [view]="[700,400]">
+    </ngx-charts-bar-vertical>
+  </div>
+  

@@ -12,7 +12,7 @@ export class SidebarComponent {
   links = [
     { label: 'Dashboard', path: '/dashboard/home' },
     { label: 'Schedule Pickup', path: '/dashboard/schedule' },
-    { label: 'Report Issues', path: '/dashboard/report' },
+    { label: 'Report Issues', path: '/dashboard/report-issues' },
     { label: 'Pickup History', path: '/dashboard/history' },
     { label: 'Notifications', path: '/dashboard/notifications' },
     { label: 'Reports', path: '/dashboard/reports' }

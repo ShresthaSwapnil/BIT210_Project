@@ -21,7 +21,7 @@ export class SidebarComponent {
   constructor(private router: Router) {}
 
   logout(): void {
-    localStorage.clear();
+    // localStorage.clear();
     this.router.navigate(['/']);
   }
 }

@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { CommunityService } from '../../services/community.service';
 import { Router } from '@angular/router';
-import {FormsModule} from '@angular/forms'
+import { FormsModule } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
-  imports:[FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule],
+  standalone: true
 })
 export class AuthComponent implements OnInit {
   isLogin = true;
@@ -19,19 +20,28 @@ export class AuthComponent implements OnInit {
   community = '';
   newCommunityName = '';
   newCommunityAddress = '';
-  pickupTime = '';
   errorMessage = '';
   communities: any[] = [];
 
   constructor(private authService: AuthService, private communityService: CommunityService, private router: Router) {}
 
   ngOnInit(): void {
+    // Load communities on component initialization
+    this.loadCommunities();
+  }
+
+  // Add this method to refresh communities data
+  loadCommunities(): void {
     this.communities = this.communityService.getCommunities();
   }
 
   toggleMode(): void {
     this.isLogin = !this.isLogin;
     this.errorMessage = '';
+    // Refresh communities when toggling to register mode
+    if (!this.isLogin) {
+      this.loadCommunities();
+    }
   }
 
   handleSubmit(): void {
@@ -50,11 +60,12 @@ export class AuthComponent implements OnInit {
         if (!this.communityService.isCommunityExists(this.newCommunityName)) {
           this.communityService.addCommunity({
             name: this.newCommunityName,
-            address: this.newCommunityAddress,
-            pickupTime: this.pickupTime,
+            address: this.newCommunityAddress
           });
           // Set the community to the newly added community name
           this.community = this.newCommunityName;
+          // Refresh communities list after adding a new one
+          this.loadCommunities();
         } else {
           this.errorMessage = 'Community already exists!';
           return;

@@ -1,14 +1,15 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
-  imports:[RouterLink,CommonModule]
+  imports: [RouterLink, RouterLinkActive, CommonModule],
+  standalone: true
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnInit {
   links = [
     { label: 'Dashboard', path: '/dashboard/home' },
     { label: 'Schedule Pickup', path: '/dashboard/schedule' },
@@ -18,10 +19,23 @@ export class SidebarComponent {
     { label: 'Reports', path: '/dashboard/reports' }
   ];
 
+  user: any = null;
+
   constructor(private router: Router) {}
 
+  ngOnInit(): void {
+    this.loadUserData();
+  }
+
+  loadUserData(): void {
+    const userData = localStorage.getItem('loggedInUser');
+    if (userData) {
+      this.user = JSON.parse(userData);
+    }
+  }
+
   logout(): void {
-    // localStorage.clear();
+    localStorage.removeItem('loggedInUser');
     this.router.navigate(['/']);
   }
 }

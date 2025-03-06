@@ -1,0 +1,9 @@
+.router-link-active {
+  background-color: #2c5f3a; 
+  border-left: 4px solid #fbbf24;
+  font-weight: bold;
+}
+
+a, button {
+  transition: all 0.2s ease;
+}

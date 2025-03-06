@@ -1,18 +1,26 @@
 <div class="h-screen w-64 bg-green-800 text-white flex flex-col">
-    <h2 class="text-xl font-bold text-center py-4 border-b border-green-600">सफाइ साथी</h2>
-  
-    <nav class="flex-grow">
-      <ul class="mt-4">
-        <li *ngFor="let link of links">
-          <a [routerLink]="link.path" routerLinkActive="bg-green-700" class="block px-6 py-3 hover:bg-green-700 transition">
-            {{ link.label }}
-          </a>
-        </li>
-      </ul>
-    </nav>
-  
-    <button (click)="logout()" class="m-4 px-6 py-2 bg-red-500 rounded-lg hover:bg-red-600">
+  <h2 class="text-xl font-bold text-center py-4 border-b border-green-600">सफाइ साथी</h2>
+
+  <nav class="flex-grow">
+    <ul class="mt-4">
+      <li *ngFor="let link of links">
+        <a [routerLink]="link.path" 
+           routerLinkActive="bg-green-700 border-l-4 border-yellow-400 font-bold" 
+           class="block px-6 py-3 hover:bg-green-700 transition">
+          {{ link.label }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- User Profile Section -->
+  <div class="border-t border-green-600 pt-3 pb-2 px-4">
+    <div *ngIf="user" class="mb-3">
+      <p class="font-semibold text-lg">{{ user.username }}</p>
+      <p class="text-green-200 text-sm">{{ user.email }}</p>
+    </div>
+    <button (click)="logout()" class="w-full px-6 py-2 bg-red-500 rounded-lg hover:bg-red-600 transition">
       Logout
     </button>
   </div>
-  
+</div>

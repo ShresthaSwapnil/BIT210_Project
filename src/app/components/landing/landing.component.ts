@@ -1,5 +1,6 @@
 // landing.component.ts
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -7,8 +8,11 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './landing.component.html',
-  styles: []
+  styleUrl: './landing.component.css'
 })
 export class LandingComponent {
-  constructor() {}
+  constructor(private router: Router) {}
+  register(){
+    this.router.navigate(['/register']);
+  }
 }

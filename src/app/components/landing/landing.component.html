@@ -3,21 +3,48 @@
   <div class="container mx-auto px-4">
     <nav class="flex justify-between items-center py-4">
       <div class="flex items-center font-bold text-2xl text-green-500">
-        <span class="w-12 h-auto"><img src="SafaiSathi.png"/></span>
+        <span class="w-12 h-auto"><img src="SafaiSathi.png" /></span>
         <span>सफाई साथी</span>
       </div>
-      
+
       <ul class="hidden md:flex space-x-8">
-        <li><a href="#features" class="text-gray-700 hover:text-green-500 font-medium">Features</a></li>
-        <li><a href="#how-it-works" class="text-gray-700 hover:text-green-500 font-medium">How It Works</a></li>
+        <li>
+          <a
+            href="#features"
+            class="text-gray-700 hover:text-green-500 font-medium"
+            >Features</a
+          >
+        </li>
+        <li>
+          <a
+            href="#how-it-works"
+            class="text-gray-700 hover:text-green-500 font-medium"
+            >How It Works</a
+          >
+        </li>
         <!-- <li><a href="#pricing" class="text-gray-700 hover:text-green-500 font-medium">Pricing</a></li> -->
-        <li><a href="#testimonials" class="text-gray-700 hover:text-green-500 font-medium">Testimonials</a></li>
-        <li><a href="#contact" class="text-gray-700 hover:text-green-500 font-medium">Contact</a></li>
+        <li>
+          <a
+            href="#testimonials"
+            class="text-gray-700 hover:text-green-500 font-medium"
+            >Testimonials</a
+          >
+        </li>
+        <li>
+          <a
+            href="#contact"
+            class="text-gray-700 hover:text-green-500 font-medium"
+            >Contact</a
+          >
+        </li>
       </ul>
-      
-      <a href="#demo" class="bg-green-500 text-white px-6 py-2 rounded font-semibold hover:bg-green-600 transition-all transform hover:-translate-y-1">
+
+      <button
+        class="bg-green-500 text-white px-6 py-2 rounded font-semibold hover:bg-green-600 transition-all transform hover:-translate-y-1"
+        (click)="register()"
+      >
         Signup/Login
-      </a>
+      </button>
     </nav>
   </div>
 </header>
@@ -28,22 +55,37 @@
     <div class="flex flex-col md:flex-row items-center md:space-x-12">
       <div class="md:w-1/2 mb-10 md:mb-0">
         <h1 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-          Smart <span class="text-green-500">Waste Management</span> for a Sustainable Future
+          Smart <span class="text-green-500">Waste Management</span> for a
+          Sustainable Future
         </h1>
         <p class="text-lg text-gray-700 mb-8">
-          EcoTrack is an innovative IoT-based waste management system that helps businesses and municipalities reduce costs, optimize collection routes, and contribute to a cleaner environment.
+          SafaiSathi is an innovative IoT-based waste management system that
+          helps businesses and municipalities reduce costs, optimize collection
+          routes, and contribute to a cleaner environment.
         </p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-          <a href="#demo" class="bg-green-500 text-white px-8 py-3 rounded-md font-semibold text-center hover:bg-green-600 transition-all">
+        <div
+          class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
+        >
+          <a
+            href="#demo"
+            class="bg-green-500 text-white px-8 py-3 rounded-md font-semibold text-center hover:bg-green-600 transition-all"
+          >
             Get Started
           </a>
-          <a href="#learn-more" class="border-2 border-green-500 text-green-500 px-8 py-3 rounded-md font-semibold text-center hover:bg-green-500 hover:text-white transition-all">
+          <a
+            href="#learn-more"
+            class="border-2 border-green-500 text-green-500 px-8 py-3 rounded-md font-semibold text-center hover:bg-green-500 hover:text-white transition-all"
+          >
             Learn More
           </a>
         </div>
       </div>
       <div class="md:w-1/2">
-        <img src="assets/dashboard-placeholder.png" alt="EcoTrack Waste Management Dashboard" class="rounded-lg shadow-xl w-full" />
+        <img
+          src="Dashboard.png"
+          alt="SafaiSathi Waste Management Dashboard"
+          class="rounded-lg shadow-xl w-full"
+        />
       </div>
     </div>
   </div>
@@ -57,74 +99,109 @@
         Powerful <span class="text-green-500">Features</span>
       </h2>
       <p class="text-lg text-gray-700">
-        Discover how our smart waste management system can transform your operations
+        Discover how our smart waste management system can transform your
+        operations
       </p>
     </div>
-    
+
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Feature 1 -->
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
-        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6">
+      <div
+        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+      >
+        <div
+          class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6"
+        >
           📊
         </div>
-        <h3 class="text-xl font-bold mb-3 text-gray-800">Real-time Monitoring</h3>
+        <h3 class="text-xl font-bold mb-3 text-gray-800">
+          Real-time Monitoring
+        </h3>
         <p class="text-gray-600">
-          Track fill levels of waste containers in real-time with our advanced IoT sensors and comprehensive dashboard.
+          Track fill levels of waste containers in real-time with our advanced
+          IoT sensors and comprehensive dashboard.
         </p>
       </div>
-      
+
       <!-- Feature 2 -->
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
-        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6">
+      <div
+        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+      >
+        <div
+          class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6"
+        >
           🚛
         </div>
         <h3 class="text-xl font-bold mb-3 text-gray-800">Route Optimization</h3>
         <p class="text-gray-600">
-          Our AI-powered system optimizes collection routes, reducing fuel consumption and operational costs by up to 30%.
+          Our AI-powered system optimizes collection routes, reducing fuel
+          consumption and operational costs by up to 30%.
         </p>
       </div>
-      
+
       <!-- Feature 3 -->
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
-        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6">
+      <div
+        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+      >
+        <div
+          class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6"
+        >
           📱
         </div>
         <h3 class="text-xl font-bold mb-3 text-gray-800">Mobile Access</h3>
         <p class="text-gray-600">
-          Access insights and manage your waste collection operations from anywhere with our intuitive mobile application.
+          Access insights and manage your waste collection operations from
+          anywhere with our intuitive mobile application.
         </p>
       </div>
-      
+
       <!-- Feature 4 -->
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
-        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6">
+      <div
+        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+      >
+        <div
+          class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6"
+        >
           📈
         </div>
         <h3 class="text-xl font-bold mb-3 text-gray-800">Advanced Analytics</h3>
         <p class="text-gray-600">
-          Gain valuable insights with detailed analytics and reports on waste generation patterns and collection efficiency.
+          Gain valuable insights with detailed analytics and reports on waste
+          generation patterns and collection efficiency.
         </p>
       </div>
-      
+
       <!-- Feature 5 -->
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
-        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6">
+      <div
+        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+      >
+        <div
+          class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6"
+        >
           🌍
         </div>
-        <h3 class="text-xl font-bold mb-3 text-gray-800">Sustainability Metrics</h3>
+        <h3 class="text-xl font-bold mb-3 text-gray-800">
+          Sustainability Metrics
+        </h3>
         <p class="text-gray-600">
-          Track your environmental impact with comprehensive sustainability metrics and carbon footprint reduction indicators.
+          Track your environmental impact with comprehensive sustainability
+          metrics and carbon footprint reduction indicators.
         </p>
       </div>
-      
+
       <!-- Feature 6 -->
-      <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2">
-        <div class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6">
+      <div
+        class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:-translate-y-2"
+      >
+        <div
+          class="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-500 text-2xl mb-6"
+        >
           🔔
         </div>
         <h3 class="text-xl font-bold mb-3 text-gray-800">Smart Alerts</h3>
         <p class="text-gray-600">
-          Receive instant notifications when containers reach capacity or when maintenance is required.
+          Receive instant notifications when containers reach capacity or when
+          maintenance is required.
         </p>
       </div>
     </div>
@@ -134,7 +211,9 @@
 <!-- Stats Section -->
 <section class="py-16 bg-gray-800 text-white">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+    <div
+      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center"
+    >
       <div>
         <h3 class="text-4xl font-bold text-green-500 mb-2">30%</h3>
         <p class="text-gray-300">Average cost reduction</p>
@@ -160,7 +239,7 @@
   <div class="container mx-auto px-4">
     <div class="text-center mb-16">
       <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        How <span class="text-green-500">EcoTrack</span> Works
+        How <span class="text-green-500">SafaiSathi</span> Works
       </h2>
       <p class="text-lg text-gray-700">
         Our simple four-step process to revolutionize your waste management
@@ -170,52 +249,66 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <!-- Step 1 -->
       <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-        <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4">
+        <div
+          class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4"
+        >
           1
         </div>
         <div>
           <h3 class="text-xl font-bold mb-2 text-gray-800">Install app</h3>
           <p class="text-gray-600">
-             Install our application on your device, which take just minutes to set up.
+            Install our application on your device, which take just minutes to
+            set up.
           </p>
         </div>
       </div>
 
       <!-- Step 2 -->
       <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-        <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4">
+        <div
+          class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4"
+        >
           2
         </div>
         <div>
           <h3 class="text-xl font-bold mb-2 text-gray-800">Onboarding</h3>
           <p class="text-gray-600">
-            Signup to our waste management system and schedule pickup dates and location according to your specific needs.
+            Signup to our waste management system and schedule pickup dates and
+            location according to your specific needs.
           </p>
         </div>
       </div>
 
       <!-- Step 3 -->
       <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-        <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4">
+        <div
+          class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4"
+        >
           3
         </div>
         <div>
-          <h3 class="text-xl font-bold mb-2 text-gray-800">Monitor & Analyze</h3>
+          <h3 class="text-xl font-bold mb-2 text-gray-800">
+            Monitor & Analyze
+          </h3>
           <p class="text-gray-600">
-            Track your pickup requests in real-time and view your requests like complaints to identify problems.
+            Track your pickup requests in real-time and view your requests like
+            complaints to identify problems.
           </p>
         </div>
       </div>
 
       <!-- Step 4 -->
       <div class="bg-white p-6 rounded-lg shadow-md flex items-start">
-        <div class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4">
+        <div
+          class="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-green-500 text-white font-bold mr-4"
+        >
           4
         </div>
         <div>
           <h3 class="text-xl font-bold mb-2 text-gray-800">Optimize & Save</h3>
           <p class="text-gray-600">
-            Use data-driven insights to optimize collection routes, reduce costs, and increase operational efficiency.
+            Use data-driven insights to optimize collection routes, reduce
+            costs, and increase operational efficiency.
           </p>
         </div>
       </div>
@@ -236,8 +329,8 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> -->
-      <!-- Starter Plan -->
-      <!-- <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-105 border border-gray-100">
+<!-- Starter Plan -->
+<!-- <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-105 border border-gray-100">
         <h3 class="text-xl font-bold mb-4 text-gray-800">Starter</h3>
         <div class="text-4xl font-bold mb-4 text-gray-800">
           $299<span class="text-sm text-gray-500 font-normal">/month</span>
@@ -272,8 +365,8 @@
         </a>
       </div> -->
 
-      <!-- Professional Plan -->
-      <!-- <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 border-2 border-green-500 relative -mt-4">
+<!-- Professional Plan -->
+<!-- <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 border-2 border-green-500 relative -mt-4">
         <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white text-xs font-bold py-1 px-4 rounded-full">
           MOST POPULAR
         </div>
@@ -319,8 +412,8 @@
         </a>
       </div> -->
 
-      <!-- Enterprise Plan -->
-      <!-- <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-105 border border-gray-100">
+<!-- Enterprise Plan -->
+<!-- <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-105 border border-gray-100">
         <h3 class="text-xl font-bold mb-4 text-gray-800">Enterprise</h3>
         <div class="text-4xl font-bold mb-4 text-gray-800">
           Custom
@@ -374,7 +467,7 @@
         What Our <span class="text-green-500">Clients</span> Say
       </h2>
       <p class="text-lg text-gray-700">
-        Learn how EcoTrack has helped organizations like yours
+        Learn how SafaiSathi has helped organizations like yours
       </p>
     </div>
 
@@ -382,13 +475,17 @@
       <!-- Testimonial 1 -->
       <div class="bg-white p-6 rounded-lg shadow-md">
         <p class="text-gray-600 italic mb-6">
-          "EcoTrack has revolutionized our waste management operations. We've reduced our collection costs by 35% and improved our environmental footprint significantly."
+          "SafaiSathi has revolutionized our waste management operations. We've
+          reduced our collection costs by 35% and improved our environmental
+          footprint significantly."
         </p>
         <div class="flex items-center">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
           <div>
             <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
-            <p class="text-gray-600 text-sm">Operations Director, GreenCity Municipality</p>
+            <p class="text-gray-600 text-sm">
+              Operations Director, GreenCity Municipality
+            </p>
           </div>
         </div>
       </div>
@@ -396,13 +493,17 @@
       <!-- Testimonial 2 -->
       <div class="bg-white p-6 rounded-lg shadow-md">
         <p class="text-gray-600 italic mb-6">
-          "The data insights we've gained from EcoTrack have been invaluable. We can now make informed decisions about our waste management strategy based on actual usage patterns."
+          "The data insights we've gained from SafaiSathi have been invaluable.
+          We can now make informed decisions about our waste management strategy
+          based on actual usage patterns."
         </p>
         <div class="flex items-center">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
           <div>
             <h4 class="font-bold text-gray-800">Michael Chen</h4>
-            <p class="text-gray-600 text-sm">Facilities Manager, Tech Innovations Inc.</p>
+            <p class="text-gray-600 text-sm">
+              Facilities Manager, Tech Innovations Inc.
+            </p>
           </div>
         </div>
       </div>
@@ -410,13 +511,17 @@
       <!-- Testimonial 3 -->
       <div class="bg-white p-6 rounded-lg shadow-md">
         <p class="text-gray-600 italic mb-6">
-          "Implementation was seamless, and the ROI has been impressive. Our collection efficiency is up by 40%, and we're saving thousands in operational costs monthly."
+          "Implementation was seamless, and the ROI has been impressive. Our
+          collection efficiency is up by 40%, and we're saving thousands in
+          operational costs monthly."
         </p>
         <div class="flex items-center">
           <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
           <div>
             <h4 class="font-bold text-gray-800">Elena Rodriguez</h4>
-            <p class="text-gray-600 text-sm">Sustainability Director, EcoResorts Group</p>
+            <p class="text-gray-600 text-sm">
+              Sustainability Director, EcoResorts Group
+            </p>
           </div>
         </div>
       </div>
@@ -427,15 +532,26 @@
 <!-- CTA Section -->
 <section id="demo" class="py-20 bg-green-500 text-white">
   <div class="container mx-auto px-4 text-center">
-    <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Waste Management?</h2>
+    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+      Ready to Transform Your Waste Management?
+    </h2>
     <p class="text-xl mb-10 max-w-3xl mx-auto">
-      Schedule a free demo today and discover how EcoTrack can help you reduce costs and increase efficiency.
+      Schedule a free demo today and discover how SafaiSathi can help you reduce
+      costs and increase efficiency.
     </p>
-    <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-      <a href="#schedule-demo" class="bg-white text-green-500 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all">
+    <div
+      class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
+    >
+      <a
+        href="#schedule-demo"
+        class="bg-white text-green-500 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all"
+      >
         Schedule Demo
       </a>
-      <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-green-500 transition-all">
+      <a
+        href="#contact"
+        class="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-green-500 transition-all"
+      >
         Contact Sales
       </a>
     </div>
@@ -449,17 +565,33 @@
       <!-- Company Info -->
       <div class="lg:col-span-2">
         <div class="flex items-center font-bold text-2xl text-green-500 mb-4">
-          <span class="w-12 h-auto"><img src="SafaiSathi.png"/></span>
+          <span class="w-12 h-auto"><img src="SafaiSathi.png" /></span>
           <span>सफाई साथी</span>
         </div>
         <p class="text-gray-400 mb-6">
           Smart waste management solutions for a sustainable future.
         </p>
         <div class="flex space-x-4">
-          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all">f</a>
-          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all">t</a>
-          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all">in</a>
-          <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all">ig</a>
+          <a
+            href="#"
+            class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
+            >f</a
+          >
+          <a
+            href="#"
+            class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
+            >t</a
+          >
+          <a
+            href="#"
+            class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
+            >in</a
+          >
+          <a
+            href="#"
+            class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
+            >ig</a
+          >
         </div>
       </div>
 
@@ -467,9 +599,15 @@
       <div>
         <h4 class="text-lg font-bold text-green-500 mb-4">Company</h4>
         <ul class="space-y-2">
-          <li><a href="#" class="text-gray-400 hover:text-white">About Us</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-white">Our Team</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-white">Careers</a></li>
+          <li>
+            <a href="#" class="text-gray-400 hover:text-white">About Us</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-400 hover:text-white">Our Team</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-400 hover:text-white">Careers</a>
+          </li>
           <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
         </ul>
       </div>
@@ -477,10 +615,16 @@
       <div>
         <h4 class="text-lg font-bold text-green-500 mb-4">Product</h4>
         <ul class="space-y-2">
-          <li><a href="#" class="text-gray-400 hover:text-white">Features</a></li>
-          <li><a href="#" class="text-gray-400 hover:text-white">How It Works</a></li>
+          <li>
+            <a href="#" class="text-gray-400 hover:text-white">Features</a>
+          </li>
+          <li>
+            <a href="#" class="text-gray-400 hover:text-white">How It Works</a>
+          </li>
           <!-- <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li> -->
-          <li><a href="#" class="text-gray-400 hover:text-white">Case Studies</a></li>
+          <li>
+            <a href="#" class="text-gray-400 hover:text-white">Case Studies</a>
+          </li>
         </ul>
       </div>
 
@@ -490,12 +634,14 @@
         <ul class="space-y-2 text-gray-400">
           <li>123 Chabahil, manage</li>
           <li>+1 (555) 123-4567</li>
-          <!-- <li>info@ecotrack.com</li> -->
+          <!-- <li>info@SafaiSathi.com</li> -->
         </ul>
       </div>
     </div>
 
-    <div class="pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+    <div
+      class="pt-8 border-t border-gray-700 text-center text-gray-400 text-sm"
+    >
       &copy; 2025 Safaisathi. All rights reserved.
     </div>
   </div>

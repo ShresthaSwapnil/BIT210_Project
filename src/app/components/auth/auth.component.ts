@@ -44,6 +44,10 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  goBack() {
+    this.router.navigate(['/']); // Navigate to the landing page route
+}
+
   handleSubmit(): void {
     if (this.isLogin) {
       const user = this.authService.login(this.email, this.password);

@@ -2,38 +2,42 @@
 <header class="fixed w-full bg-white shadow-md z-50">
   <div class="container mx-auto px-4">
     <nav class="flex justify-between items-center py-4">
-      <div class="flex items-center font-bold text-2xl text-green-500">
+      <div
+        (click)="scrollToTop()"
+        class="flex items-center font-bold text-2xl text-green-500 cursor-pointer"
+      >
         <span class="w-12 h-auto"><img src="SafaiSathi.png" /></span>
         <span>सफाई साथी</span>
       </div>
 
       <ul class="hidden md:flex space-x-8">
         <li>
-          <a
-            href="#features"
-            class="text-gray-700 hover:text-green-500 font-medium"
-            >Features</a
+          <button
+            (click)="scrollToElement('features')"
+            class="text-gray-700 hover:text-green-500 font-medium cursor-pointer"
           >
+            Features
+          </button>
         </li>
         <li>
           <a
-            href="#how-it-works"
-            class="text-gray-700 hover:text-green-500 font-medium"
+            (click)="scrollToElement('how-it-works')"
+            class="text-gray-700 hover:text-green-500 font-medium cursor-pointer"
             >How It Works</a
           >
         </li>
         <!-- <li><a href="#pricing" class="text-gray-700 hover:text-green-500 font-medium">Pricing</a></li> -->
         <li>
           <a
-            href="#testimonials"
-            class="text-gray-700 hover:text-green-500 font-medium"
+            (click)="scrollToElement('testimonials')"
+            class="text-gray-700 hover:text-green-500 font-medium cursor-pointer"
             >Testimonials</a
           >
         </li>
         <li>
           <a
-            href="#contact"
-            class="text-gray-700 hover:text-green-500 font-medium"
+            (click)="scrollToElement('contact')"
+            class="text-gray-700 hover:text-green-500 font-medium cursor-pointer"
             >Contact</a
           >
         </li>

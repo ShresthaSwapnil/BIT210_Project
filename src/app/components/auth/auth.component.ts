@@ -13,7 +13,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
 })
 export class AuthComponent implements OnInit {
-  isLogin = true;
+  isLogin = false;
   username = '';
   email = '';
   password = '';
@@ -23,6 +23,9 @@ export class AuthComponent implements OnInit {
   pickupTime = '';
   errorMessage = '';
   communities: any[] = [];
+  passwordPattern = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+  passwordError = '';
+  showPassword = false;
 
   constructor(
     private authService: AuthService,
@@ -48,14 +51,44 @@ export class AuthComponent implements OnInit {
   toggleMode(): void {
     this.isLogin = !this.isLogin;
     this.errorMessage = '';
+    this.passwordError = '';
     if (!this.isLogin) this.loadCommunities();
+  }
+
+  togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
   }
 
   goBack() {
     this.router.navigate(['/']); // Navigate to landing page
   }
 
+  validatePassword(): boolean {
+    if (!this.password) {
+      this.passwordError = 'Password is required';
+      return false;
+    }
+
+    if (this.password.length < 8) {
+      this.passwordError = 'Password must be at least 8 characters long';
+      return false;
+    }
+
+    if (!this.passwordPattern.test(this.password)) {
+      this.passwordError =
+        'Password must contain at least 1 number and 1 special character';
+      return false;
+    }
+
+    this.passwordError = '';
+    return true;
+  }
+
   handleSubmit(): void {
+    if (!this.isLogin && !this.validatePassword()) {
+      return;
+    }
+
     if (this.isLogin) {
       this.authService.loginAPI(this.email, this.password).subscribe({
         next: (response: any) => {

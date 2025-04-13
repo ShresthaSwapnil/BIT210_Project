@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,9 +15,13 @@ export class PickupService {
   }
 
   getPickups(userId?: string, community?: string): Observable<any> {
-    let url = this.apiUrl;
-    if (userId) url += `?user=${userId}`;
-    if (community) url += `?community=${community}`;
-    return this.http.get(url);
+    let params = new HttpParams();
+    if (userId) {
+      params = params.set('user', userId);
+    }
+    if (community) {
+      params = params.set('community', community);
+    }
+    return this.http.get(this.apiUrl, { params });
   }
 }

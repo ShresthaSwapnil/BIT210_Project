@@ -7,7 +7,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   imports: [RouterLink, RouterLinkActive, CommonModule],
-  standalone: true
+  standalone: true,
 })
 export class SidebarComponent implements OnInit {
   links = [
@@ -16,7 +16,7 @@ export class SidebarComponent implements OnInit {
     { label: 'Report Issues', path: '/dashboard/report-issues' },
     { label: 'Pickup History', path: '/dashboard/history' },
     { label: 'Notifications', path: '/dashboard/notifications' },
-    { label: 'Reports', path: '/dashboard/reports' }
+    { label: 'Reports', path: '/dashboard/reports' },
   ];
 
   user: any = null;
@@ -25,6 +25,25 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadUserData();
+  }
+
+  get userInitials(): string {
+    if (!this.user || !this.user.username) {
+      return '?'; // Return '?' or empty string if no user/username
+    }
+
+    const nameParts = this.user.username.trim().split(' ');
+    if (nameParts.length === 1) {
+      // Only one name/word, take the first letter
+      return nameParts[0].charAt(0).toUpperCase();
+    } else if (nameParts.length > 1) {
+      // Take first letter of the first name and first letter of the last name
+      const firstNameInitial = nameParts[0].charAt(0);
+      const lastNameInitial = nameParts[nameParts.length - 1].charAt(0);
+      return (firstNameInitial + lastNameInitial).toUpperCase();
+    }
+
+    return '?'; // Fallback
   }
 
   loadUserData(): void {

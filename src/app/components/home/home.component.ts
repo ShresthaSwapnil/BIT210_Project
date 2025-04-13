@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { PickupService } from '../../services/pickup.service';
+import { HistoryService } from '../../services/history.service';
 
 @Component({
   selector: 'app-home',
+  standalone: true,
   imports: [CommonModule, NgxChartsModule],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
   pickupData: any[] = [];
   wasteTypeData: any[] = [];
   totalPickups = 0;
 
-  // Chart Config
-  view: [number, number] = [700, 400];
+  // Chart configuration
+  view: [number, number] = [800, 400];
   showXAxis = true;
   showYAxis = true;
   gradient = false;
@@ -24,46 +25,54 @@ export class HomeComponent implements OnInit{
   xAxisLabel = 'Waste Type';
   showYAxisLabel = true;
   yAxisLabel = 'No. of Pickups';
-  colorScheme = { domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'] };
+  colorScheme = {
+    name: 'custom',
+    selectable: true,
+    group: 'Ordinal',
+    domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA'],
+  };
 
-  constructor(private pickupService: PickupService) {}
+  constructor(private historyService: HistoryService) {}
 
   ngOnInit(): void {
     this.loadDashboardData();
   }
 
   loadDashboardData(): void {
-    // Example: Fetch pickups for the logged-in user or community (optional filtering)
-    this.pickupService.getPickups().subscribe({
-      next: (pickups) => {
+    this.historyService.getPickups().subscribe({
+      next: (pickups: any[]) => {
         this.totalPickups = pickups.length;
-  
-        // Count waste types
+
+        // Count each waste type
         const wasteCount: any = {
           Household: 0,
           Recyclable: 0,
           'Paper/Plastic/Aluminium': 0,
           Hazardous: 0,
         };
-  
-        pickups.forEach((pickup: any) => {
+
+        pickups.forEach((pickup) => {
           pickup.wasteTypes.forEach((type: string) => {
-            // You might need to format the keys to match wasteCount keys
-            if (type === 'household') wasteCount.Household++;
-            if (type === 'recyclable') wasteCount.Recyclable++;
-            if (type === 'paperPlasticAluminium') wasteCount['Paper/Plastic/Aluminium']++;
-            if (type === 'hazardous') wasteCount.Hazardous++;
+            if (type === 'household') {
+              wasteCount.Household++;
+            } else if (type === 'recyclable') {
+              wasteCount.Recyclable++;
+            } else if (type === 'paperPlasticAluminium') {
+              wasteCount['Paper/Plastic/Aluminium']++;
+            } else if (type === 'hazardous') {
+              wasteCount.Hazardous++;
+            }
           });
         });
-  
+
         // Prepare chart data
         this.wasteTypeData = Object.keys(wasteCount).map((type) => ({
           name: type,
           value: wasteCount[type],
         }));
-  
+
         // Prepare table data
-        this.pickupData = pickups.map((p: any) => ({
+        this.pickupData = pickups.map((p) => ({
           community: p.community,
           date: p.date,
           time: p.time,
@@ -72,7 +81,7 @@ export class HomeComponent implements OnInit{
       },
       error: (err) => {
         console.error('Failed to load pickups:', err);
-      }
+      },
     });
-  }  
+  }
 }

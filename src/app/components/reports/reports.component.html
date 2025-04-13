@@ -133,6 +133,7 @@
     </h3>
     <div class="p-4 border rounded-lg bg-white shadow-sm">
       <ngx-charts-bar-vertical
+        *ngIf="chartData && chartData.length > 0"
         [results]="chartData"
         [xAxis]="true"
         [yAxis]="true"

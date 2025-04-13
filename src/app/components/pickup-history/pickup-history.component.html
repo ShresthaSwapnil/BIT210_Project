@@ -86,31 +86,24 @@
           </th>
         </tr>
       </thead>
-      <tbody class="divide-y divide-gray-200">
+      <tbody class="bg-white divide-y divide-gray-200">
         <tr
-          *ngFor="let pickup of filteredPickups"
-          class="hover:bg-gray-50 transition duration-150 ease-in-out"
+          *ngFor="let row of tableData; let i = index"
+          [ngClass]="{ 'bg-gray-50': i % 2 !== 0 }"
         >
           <td
-            class="border-l border-r border-gray-300 px-6 py-4 whitespace-nowrap text-sm text-gray-800"
+            *ngFor="let key of tableKeys"
+            class="px-6 py-4 whitespace-nowrap text-sm text-gray-700"
           >
-            {{ pickup.date }}
-          </td>
-          <td
-            class="border-l border-r border-gray-300 px-6 py-4 whitespace-nowrap text-sm text-gray-800"
-          >
-            {{ pickup.time }}
-          </td>
-          <td
-            class="border-l border-r border-gray-300 px-6 py-4 text-sm text-gray-800"
-          >
-            {{ pickup.wasteTypes.join(", ") }}
+            {{ row[key] }}
           </td>
         </tr>
-
-        <tr *ngIf="filteredPickups.length === 0">
-          <td colspan="3" class="text-center py-8 px-6 text-gray-500 italic">
-            No pickup records match your current filter criteria.
+        <tr *ngIf="tableData.length === 0">
+          <td
+            [attr.colspan]="tableHeaders.length"
+            class="text-center py-8 px-6 text-gray-500 text-lg"
+          >
+            No data available for the selected report type and filters.
           </td>
         </tr>
       </tbody>
@@ -125,6 +118,7 @@
       class="p-4 bg-gray-50 rounded-md border border-gray-200 flex justify-center"
     >
       <ngx-charts-pie-chart
+        *ngIf="chartData && chartData.length > 0"
         [results]="chartData"
         [legend]="true"
         [doughnut]="false"

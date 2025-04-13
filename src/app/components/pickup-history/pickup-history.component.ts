@@ -13,41 +13,69 @@ export class PickupHistoryComponent implements OnInit {
   allPickups: any[] = [];
   filteredPickups: any[] = [];
   chartData: any[] = [];
+  isAdmin = false;
+  tableData: any[] = [];
+  tableHeaders: string[] = [];
+  tableKeys: string[] = [];
+
   filters = {
     startDate: '',
     endDate: '',
     wasteType: '',
   };
 
+  view: [number, number] = [700, 400];
+
   constructor(private historyService: HistoryService) {}
 
   ngOnInit(): void {
-    this.allPickups = this.historyService.getPickups();
-    this.filteredPickups = [...this.allPickups];
-    this.generateChartData();
+    const loggedInUser = JSON.parse(
+      localStorage.getItem('loggedInUser') || '{}'
+    );
+    this.isAdmin = loggedInUser.role === 'admin';
+    this.loadPickupHistory();
   }
 
   applyFilters(): void {
-    this.filteredPickups = this.historyService.filterPickups(
-      { start: this.filters.startDate, end: this.filters.endDate },
-      this.filters.wasteType
-    );
-    this.generateChartData();
+    this.loadPickupHistory();
   }
 
-  generateChartData(): void {
-    const wasteCounts: { [key: string]: number } = {};
+  loadPickupHistory(): void {
+    const loggedInUser = JSON.parse(
+      localStorage.getItem('loggedInUser') || '{}'
+    );
 
-    this.filteredPickups.forEach((pickup) => {
-      pickup.wasteTypes.forEach((type: string) => {
-        wasteCounts[type] = (wasteCounts[type] || 0) + 1;
+    this.historyService
+      .getPickups(
+        loggedInUser._id,
+        this.isAdmin ? undefined : loggedInUser.community
+      )
+      .subscribe({
+        next: (pickups) => {
+          const filteredPickups = this.historyService.filterPickups(
+            pickups,
+            { start: this.filters.startDate, end: this.filters.endDate },
+            this.filters.wasteType
+          );
+
+          this.tableHeaders = ['Date', 'Time', 'Waste Types'];
+          this.tableKeys = ['date', 'time', 'wasteTypes'];
+          this.tableData = filteredPickups;
+
+          const wasteCounts: any = {};
+          filteredPickups.forEach((pickup: any) => {
+            pickup.wasteTypes.forEach((type: string) => {
+              wasteCounts[type] = (wasteCounts[type] || 0) + 1;
+            });
+          });
+
+          this.chartData = Object.keys(wasteCounts).map((type) => ({
+            name: this.formatWasteType(type),
+            value: wasteCounts[type],
+          }));
+        },
+        error: (err) => console.error('Failed to load pickups:', err),
       });
-    });
-
-    this.chartData = Object.keys(wasteCounts).map((type) => ({
-      name: this.formatWasteType(type),
-      value: wasteCounts[type],
-    }));
   }
 
   formatWasteType(type: string): string {

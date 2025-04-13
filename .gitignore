@@ -10,6 +10,8 @@
 /node_modules
 npm-debug.log
 yarn-error.log
+/waste-management-backend/node_modules
+/waste-management-backend/.env
 
 # IDEs and editors
 .idea/

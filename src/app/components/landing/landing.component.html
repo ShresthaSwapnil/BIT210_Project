@@ -36,6 +36,13 @@
         </li>
         <li>
           <a
+            (click)="scrollToElement('about-us')"
+            class="text-gray-700 hover:text-green-500 font-medium cursor-pointer"
+            >About Us</a
+          >
+        </li>
+        <li>
+          <a
             (click)="scrollToElement('contact')"
             class="text-gray-700 hover:text-green-500 font-medium cursor-pointer"
             >Contact</a
@@ -71,14 +78,14 @@
           class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4"
         >
           <a
-            href="#demo"
-            class="bg-green-500 text-white px-8 py-3 rounded-md font-semibold text-center hover:bg-green-600 transition-all"
+            (click)="register()"
+            class="bg-green-500 text-white px-8 py-3 rounded-md font-semibold text-center hover:bg-green-600 transition-all cursor-pointer"
           >
             Get Started
           </a>
           <a
-            href="#learn-more"
-            class="border-2 border-green-500 text-green-500 px-8 py-3 rounded-md font-semibold text-center hover:bg-green-500 hover:text-white transition-all"
+            (click)="scrollToElement('how-it-works')"
+            class="border-2 border-green-500 text-green-500 px-8 py-3 rounded-md font-semibold text-center hover:bg-green-500 hover:text-white transition-all cursor-pointer"
           >
             Learn More
           </a>
@@ -86,7 +93,7 @@
       </div>
       <div class="md:w-1/2">
         <img
-          src="Dashboard.png"
+          src="/LandingPage/Dashboard.png"
           alt="SafaiSathi Waste Management Dashboard"
           class="rounded-lg shadow-xl w-full"
         />
@@ -261,8 +268,7 @@
         <div>
           <h3 class="text-xl font-bold mb-2 text-gray-800">Install app</h3>
           <p class="text-gray-600">
-            Install our application on your device, which take just minutes to
-            set up.
+            Open our website on your device, which take just minutes to set up.
           </p>
         </div>
       </div>
@@ -320,149 +326,6 @@
   </div>
 </section>
 
-<!-- Pricing Section -->
-<!-- <section id="pricing" class="py-20 bg-white">
-  <div class="container mx-auto px-4">
-    <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">
-        Simple & Transparent <span class="text-green-500">Pricing</span>
-      </h2>
-      <p class="text-lg text-gray-700">
-        Choose the plan that works best for your organization
-      </p>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> -->
-<!-- Starter Plan -->
-<!-- <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-105 border border-gray-100">
-        <h3 class="text-xl font-bold mb-4 text-gray-800">Starter</h3>
-        <div class="text-4xl font-bold mb-4 text-gray-800">
-          $299<span class="text-sm text-gray-500 font-normal">/month</span>
-        </div>
-        <p class="text-gray-600 mb-6">
-          Perfect for small businesses and startups
-        </p>
-        <ul class="mb-8 space-y-3">
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Up to 25 containers</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Basic analytics</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Route optimization</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Mobile app access</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Email support</span>
-          </li>
-        </ul>
-        <a href="#get-started" class="w-full block text-center bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600 transition-all">
-          Get Started
-        </a>
-      </div> -->
-
-<!-- Professional Plan -->
-<!-- <div class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition-all hover:scale-105 border-2 border-green-500 relative -mt-4">
-        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white text-xs font-bold py-1 px-4 rounded-full">
-          MOST POPULAR
-        </div>
-        <h3 class="text-xl font-bold mb-4 text-gray-800">Professional</h3>
-        <div class="text-4xl font-bold mb-4 text-gray-800">
-          $599<span class="text-sm text-gray-500 font-normal">/month</span>
-        </div>
-        <p class="text-gray-600 mb-6">
-          Ideal for medium-sized organizations
-        </p>
-        <ul class="mb-8 space-y-3">
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Up to 100 containers</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Advanced analytics</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Route optimization</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Mobile app access</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Priority support</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Custom reports</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>API access</span>
-          </li>
-        </ul>
-        <a href="#get-started" class="w-full block text-center bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600 transition-all">
-          Get Started
-        </a>
-      </div> -->
-
-<!-- Enterprise Plan -->
-<!-- <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl transition-all hover:scale-105 border border-gray-100">
-        <h3 class="text-xl font-bold mb-4 text-gray-800">Enterprise</h3>
-        <div class="text-4xl font-bold mb-4 text-gray-800">
-          Custom
-        </div>
-        <p class="text-gray-600 mb-6">
-          For large organizations and municipalities
-        </p>
-        <ul class="mb-8 space-y-3">
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Unlimited containers</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Advanced analytics</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Route optimization</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Mobile app access</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>24/7 dedicated support</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Custom reports & dashboards</span>
-          </li>
-          <li class="flex items-start">
-            <span class="text-green-500 mr-2">✓</span>
-            <span>Dedicated account manager</span>
-          </li>
-        </ul>
-        <a href="#contact" class="w-full block text-center border-2 border-green-500 text-green-500 py-3 rounded-md font-semibold hover:bg-green-500 hover:text-white transition-all">
-          Contact Sales
-        </a>
-      </div>
-    </div>
-  </div>
-</section> -->
-
 <!-- Testimonials Section -->
 <section id="testimonials" class="py-20 bg-gray-50">
   <div class="container mx-auto px-4">
@@ -484,7 +347,10 @@
           footprint significantly."
         </p>
         <div class="flex items-center">
-          <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+          <img
+            src="/LandingPage/Sabrina.jpeg"
+            class="w-12 h-12 bg-gray-300 rounded-full mr-4"
+          />
           <div>
             <h4 class="font-bold text-gray-800">Sarah Johnson</h4>
             <p class="text-gray-600 text-sm">
@@ -502,7 +368,10 @@
           based on actual usage patterns."
         </p>
         <div class="flex items-center">
-          <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+          <img
+            src="/LandingPage/Elon.jpeg"
+            class="w-12 h-12 bg-gray-300 rounded-full mr-4"
+          />
           <div>
             <h4 class="font-bold text-gray-800">Michael Chen</h4>
             <p class="text-gray-600 text-sm">
@@ -520,7 +389,10 @@
           operational costs monthly."
         </p>
         <div class="flex items-center">
-          <div class="w-12 h-12 bg-gray-300 rounded-full mr-4"></div>
+          <img
+            src="/LandingPage/Rowling.jpeg"
+            class="w-12 h-12 bg-gray-300 rounded-full mr-4"
+          />
           <div>
             <h4 class="font-bold text-gray-800">Elena Rodriguez</h4>
             <p class="text-gray-600 text-sm">
@@ -532,6 +404,87 @@
     </div>
   </div>
 </section>
+
+<!-- About Us Section -->
+<section id="about-us" class="py-20 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">
+        About <span class="text-green-500">SafaiSathi</span>
+      </h2>
+      <p class="text-lg text-gray-700 max-w-3xl mx-auto">
+        Pioneering intelligent solutions for cleaner communities and a
+        sustainable tomorrow.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <!-- Left Column: Text Content -->
+      <div>
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Mission</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          At SafaiSathi (सफाई साथी - "Cleaning Friend"), our mission is to
+          revolutionize waste management through innovative technology. We aim
+          to empower municipalities and businesses with smart, data-driven tools
+          to optimize collection processes, reduce operational costs, and
+          significantly minimize environmental impact.
+        </p>
+
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Story</h3>
+        <p class="text-gray-600 mb-6 leading-relaxed">
+          Born from a vision for cleaner cities and more efficient resource
+          management, SafaiSathi was founded to address the growing challenges
+          of urban waste. We saw the potential of IoT and data analytics to
+          transform traditional, often inefficient, waste collection methods
+          into a streamlined, proactive system.
+        </p>
+
+        <h3 class="text-2xl font-semibold text-gray-800 mb-4">Our Values</h3>
+        <ul class="list-disc list-inside text-gray-600 space-y-2 mb-6">
+          <li>
+            <span class="font-medium text-gray-700">Innovation:</span>
+            Continuously exploring technology to find better solutions.
+          </li>
+          <li>
+            <span class="font-medium text-gray-700">Sustainability:</span>
+            Committed to practices that protect our planet.
+          </li>
+          <li>
+            <span class="font-medium text-gray-700">Efficiency:</span> Helping
+            our clients save resources and operate smarter.
+          </li>
+          <li>
+            <span class="font-medium text-gray-700">Community:</span> Working
+            towards cleaner, healthier living environments for everyone.
+          </li>
+        </ul>
+        <p class="text-gray-600 leading-relaxed">
+          Our dedicated team combines expertise in technology, logistics, and
+          environmental science to deliver a robust and reliable waste
+          management platform. We believe that smarter waste management is key
+          to building sustainable communities for the future.
+        </p>
+      </div>
+
+      <!-- Right Column: Image -->
+      <div class="mt-10 md:mt-0">
+        <img
+          src="LandingPage/WasteManagement.jpg"
+          alt="SafaiSathi Team or Concept
+        Image"
+          class="rounded-lg shadow-xl w-full h-auto object-cover"
+          style="max-height: 500px"
+        />
+        <!-- Suggestion: Replace "/images/team-or-concept.jpg" with an actual relevant image path -->
+        <p class="text-center text-sm text-gray-500 mt-4">
+          Our team is dedicated to building a cleaner future.
+        </p>
+        <!-- Optional caption -->
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End About Us Section -->
 
 <!-- CTA Section -->
 <section id="demo" class="py-20 bg-green-500 text-white">
@@ -547,25 +500,19 @@
       class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6"
     >
       <a
-        href="#schedule-demo"
+        (click)="register()"
         class="bg-white text-green-500 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all"
       >
-        Schedule Demo
-      </a>
-      <a
-        href="#contact"
-        class="border-2 border-white text-white px-8 py-3 rounded-md font-semibold hover:bg-white hover:text-green-500 transition-all"
-      >
-        Contact Sales
+        Get Started
       </a>
     </div>
   </div>
 </section>
 
 <!-- Footer -->
-<footer class="bg-gray-800 text-white pt-16 pb-6">
+<footer class="bg-gray-800 text-white pt-12 pb-6">
   <div class="container mx-auto px-4">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
+    <div class="flex flex-row justify-around mb-8">
       <!-- Company Info -->
       <div class="lg:col-span-2">
         <div class="flex items-center font-bold text-2xl text-green-500 mb-4">
@@ -577,67 +524,38 @@
         </p>
         <div class="flex space-x-4">
           <a
-            href="#"
+            href="www.facebook.com"
+            target="_blank"
             class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
             >f</a
           >
           <a
-            href="#"
+            href="www.x.com"
+            target="_blank"
             class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
-            >t</a
+            >x</a
           >
           <a
-            href="#"
+            href="www.linkedin.com"
+            target="_blank"
             class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
             >in</a
           >
           <a
-            href="#"
+            href="www.instagram.com"
+            target="_blank"
             class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-green-500 transition-all"
             >ig</a
           >
         </div>
       </div>
 
-      <!-- Quick Links -->
-      <div>
-        <h4 class="text-lg font-bold text-green-500 mb-4">Company</h4>
-        <ul class="space-y-2">
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white">About Us</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white">Our Team</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white">Careers</a>
-          </li>
-          <li><a href="#" class="text-gray-400 hover:text-white">Press</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h4 class="text-lg font-bold text-green-500 mb-4">Product</h4>
-        <ul class="space-y-2">
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white">Features</a>
-          </li>
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white">How It Works</a>
-          </li>
-          <!-- <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li> -->
-          <li>
-            <a href="#" class="text-gray-400 hover:text-white">Case Studies</a>
-          </li>
-        </ul>
-      </div>
-
       <!-- Contact -->
       <div id="contact">
         <h4 class="text-lg font-bold text-green-500 mb-4">Contact Us</h4>
         <ul class="space-y-2 text-gray-400">
-          <li>123 Chabahil, manage</li>
-          <li>+1 (555) 123-4567</li>
+          <li>Chabahil, Kathmandu, Nepal</li>
+          <li>+977 9812345678</li>
           <!-- <li>info@SafaiSathi.com</li> -->
         </ul>
       </div>

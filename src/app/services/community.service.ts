@@ -1,33 +1,27 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CommunityService {
-  private communities: any[] = [];
+  private apiUrl = 'http://localhost:5000/api/communities';
 
-  constructor() {
-    this.loadCommunities();
+  constructor(private http: HttpClient) {}
+
+  // Add community to the database
+  addCommunity(community: any): Observable<any> {
+    return this.http.post(this.apiUrl, community);
   }
 
-  private loadCommunities(): void {
-    // Always load fresh data from localStorage
-    this.communities = JSON.parse(localStorage.getItem('communities') || '[]');
+  // Fetch all communities from the database
+  getCommunities(): Observable<any> {
+    return this.http.get(this.apiUrl);
   }
 
-  addCommunity(community: any): void {
-    this.loadCommunities(); // Refresh before adding
-    this.communities.push(community);
-    localStorage.setItem('communities', JSON.stringify(this.communities));
-  }
-
-  getCommunities(): any[] {
-    this.loadCommunities(); // Always get fresh data
-    return this.communities;
-  }
-
-  isCommunityExists(name: string): boolean {
-    this.loadCommunities(); // Always get fresh data
-    return this.communities.some((c: { name: string; }) => c.name === name);
+  // Check if a community exists by name
+  checkCommunityExists(name: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}?name=${name}`);
   }
 }

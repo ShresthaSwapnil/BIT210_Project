@@ -1,64 +1,140 @@
-<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-md">
-    <h2 class="text-2xl font-bold mb-4">Pickup History</h2>
-  
-    <!-- Filters -->
-    <div class="flex flex-wrap gap-4 mb-4">
+<div class="max-w-4xl mx-auto p-8 bg-white rounded-lg shadow-lg">
+  <h2
+    class="text-3xl font-bold mb-6 pb-3 border-b border-gray-200 text-gray-800"
+  >
+    Pickup History
+  </h2>
+
+  <div class="mb-8 p-4 bg-gray-50 rounded-md border border-gray-200">
+    <h3 class="text-lg font-semibold mb-4 text-gray-700">Filter Records</h3>
+    <div class="flex flex-wrap gap-6 items-end">
       <div>
-        <label class="block mb-1">Start Date:</label>
-        <input type="date" [(ngModel)]="filters.startDate" class="px-4 py-2 border rounded-md" />
+        <label
+          for="startDate"
+          class="block mb-1 text-sm font-medium text-gray-600"
+          >Start Date:</label
+        >
+        <input
+          id="startDate"
+          type="date"
+          [(ngModel)]="filters.startDate"
+          class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-150 ease-in-out"
+        />
       </div>
-  
+
       <div>
-        <label class="block mb-1">End Date:</label>
-        <input type="date" [(ngModel)]="filters.endDate" class="px-4 py-2 border rounded-md" />
+        <label
+          for="endDate"
+          class="block mb-1 text-sm font-medium text-gray-600"
+          >End Date:</label
+        >
+        <input
+          id="endDate"
+          type="date"
+          [(ngModel)]="filters.endDate"
+          [min]="filters.startDate"
+          class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-150 ease-in-out"
+        />
       </div>
-  
+
       <div>
-        <label class="block mb-1">Waste Type:</label>
-        <select [(ngModel)]="filters.wasteType" class="px-4 py-2 border rounded-md">
-          <option value="">All</option>
+        <label
+          for="wasteType"
+          class="block mb-1 text-sm font-medium text-gray-600"
+          >Waste Type:</label
+        >
+        <select
+          id="wasteType"
+          [(ngModel)]="filters.wasteType"
+          class="px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-transparent transition duration-150 ease-in-out bg-white"
+        >
+          <option value="">All Types</option>
           <option value="household">Household Waste</option>
           <option value="recyclable">Recyclable Waste</option>
           <option value="paperPlasticAluminium">Paper/Plastic/Aluminium</option>
           <option value="hazardous">Hazardous Waste</option>
         </select>
       </div>
-  
-      <button (click)="applyFilters()" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+
+      <button
+        (click)="applyFilters()"
+        class="bg-green-600 text-white px-5 py-2 rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-150 ease-in-out shadow-sm"
+      >
         Apply Filters
       </button>
     </div>
-  
-    <!-- Table -->
-    <table class="w-full border-collapse border border-gray-300 mb-6">
-      <thead class="bg-gray-200">
+  </div>
+
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full border-collapse border border-gray-300 text-left">
+      <thead class="bg-gray-100">
         <tr>
-          <th class="border px-4 py-2">Date</th>
-          <th class="border px-4 py-2">Time</th>
-          <th class="border px-4 py-2">Waste Types</th>
+          <th
+            class="border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 uppercase tracking-wider"
+          >
+            Date
+          </th>
+          <th
+            class="border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 uppercase tracking-wider"
+          >
+            Time
+          </th>
+          <th
+            class="border border-gray-300 px-6 py-3 text-sm font-semibold text-gray-700 uppercase tracking-wider"
+          >
+            Waste Types
+          </th>
         </tr>
       </thead>
-      <tbody>
-        <tr *ngFor="let pickup of filteredPickups">
-          <td class="border px-4 py-2">{{ pickup.date }}</td>
-          <td class="border px-4 py-2">{{ pickup.time }}</td>
-          <td class="border px-4 py-2">{{ pickup.wasteTypes.join(', ') }}</td>
+      <tbody class="divide-y divide-gray-200">
+        <tr
+          *ngFor="let pickup of filteredPickups"
+          class="hover:bg-gray-50 transition duration-150 ease-in-out"
+        >
+          <td
+            class="border-l border-r border-gray-300 px-6 py-4 whitespace-nowrap text-sm text-gray-800"
+          >
+            {{ pickup.date }}
+          </td>
+          <td
+            class="border-l border-r border-gray-300 px-6 py-4 whitespace-nowrap text-sm text-gray-800"
+          >
+            {{ pickup.time }}
+          </td>
+          <td
+            class="border-l border-r border-gray-300 px-6 py-4 text-sm text-gray-800"
+          >
+            {{ pickup.wasteTypes.join(", ") }}
+          </td>
         </tr>
+
         <tr *ngIf="filteredPickups.length === 0">
-          <td colspan="3" class="text-center py-4">No pickups found for the selected filters.</td>
+          <td colspan="3" class="text-center py-8 px-6 text-gray-500 italic">
+            No pickup records match your current filter criteria.
+          </td>
         </tr>
       </tbody>
     </table>
-  
-    <!-- Chart -->
-    <ngx-charts-pie-chart
-      [results]="chartData"
-      [legend]="true"
-      [doughnut]="false"
-      [explodeSlices]="false"
-      [labels]="true"
-      [gradient]="false"
-      [view]="[700,400]">
-    </ngx-charts-pie-chart>
   </div>
-  
+
+  <div class="mt-10">
+    <h3 class="text-xl font-semibold mb-4 text-gray-700">
+      Waste Type Distribution (Filtered)
+    </h3>
+    <div
+      class="p-4 bg-gray-50 rounded-md border border-gray-200 flex justify-center"
+    >
+      <ngx-charts-pie-chart
+        [results]="chartData"
+        [legend]="true"
+        [doughnut]="false"
+        [explodeSlices]="false"
+        [labels]="true"
+        [gradient]="false"
+        [view]="[600, 350]"
+        class="max-w-full"
+      >
+      </ngx-charts-pie-chart>
+    </div>
+  </div>
+</div>

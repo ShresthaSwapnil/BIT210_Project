@@ -16,19 +16,44 @@ export class NotificationsComponent implements OnInit {
   constructor(private notificationService: NotificationService) {}
 
   ngOnInit(): void {
-    this.notifications = this.notificationService.getNotifications();
+    this.fetchNotifications();
   
-    // Retrieve logged-in user and check if they are an admin
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
     this.isAdmin = loggedInUser.role === 'admin';
   }
   
-
+  fetchNotifications(): void {
+    this.notificationService.getNotifications().subscribe({
+      next: (data) => this.notifications = data,
+      error: () => console.error('Failed to fetch notifications'),
+    });
+  }
+  
   broadcastAnnouncement(): void {
     if (this.announcementText.trim() !== '') {
-      this.notificationService.broadcastAnnouncement(this.announcementText);
-      this.notifications = this.notificationService.getNotifications();
-      this.announcementText = ''; // Clear input field
+      const notification = {
+        message: this.announcementText,
+        type: 'announcement'
+      };
+  
+      this.notificationService.addNotification(notification).subscribe({
+        next: () => {
+          this.fetchNotifications();
+          this.announcementText = '';
+        },
+        error: () => console.error('Failed to broadcast announcement')
+      });
     }
   }
+  
+  // Admin Delete Feature
+  deleteNotification(id: string): void {
+    if (confirm('Are you sure you want to delete this notification?')) {
+      this.notificationService.deleteNotification(id).subscribe({
+        next: () => this.fetchNotifications(),
+        error: () => console.error('Failed to delete notification')
+      });
+    }
+  }
+  
 }

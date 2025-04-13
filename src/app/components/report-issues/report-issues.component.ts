@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-report-issues',
   templateUrl: './report-issues.component.html',
-  imports:[CommonModule,FormsModule]
+  imports: [CommonModule, FormsModule],
 })
 export class ReportIssuesComponent {
   issueType = '';
@@ -36,26 +36,37 @@ export class ReportIssuesComponent {
 
     // Generate a unique Issue ID
     const issueID = 'ISSUE-' + new Date().getTime();
+    const loggedInUser = JSON.parse(
+      localStorage.getItem('loggedInUser') || '{}'
+    );
 
     // Create the issue object
     const issue = {
       issueID: issueID,
+      user: loggedInUser._id,
+      community: loggedInUser.community,
       issueType: this.issueType,
       location: this.location,
       description: this.description,
       comments: this.comments,
-      photo: this.photo ? this.photo.name : null, // For dummy purposes
-      status: 'NEW'
+      photo: this.photo ? this.photo.name : null, // Optional
+      status: 'NEW',
     };
 
     // Log the issue using the IssueService
-    this.issueService.logIssue(issue);
-
-    // Display a success notification with the unique Issue ID
-    this.successMessage = `Issue reported successfully! Your Issue ID is ${issueID} with status NEW.`;
-    this.errorMessage = '';
-
-    // Reset the form fields
+    this.issueService.logIssue(issue).subscribe({
+      next: () => {
+        this.successMessage = `Issue reported successfully! Your Issue ID is ${issueID} with status NEW.`;
+        this.errorMessage = '';
+        this.resetForm(form);
+      },
+      error: () => {
+        this.errorMessage = 'Failed to log the issue.';
+        this.successMessage = '';
+      },
+    });
+  }
+  resetForm(form: any) {
     this.issueType = '';
     this.location = '';
     this.description = '';

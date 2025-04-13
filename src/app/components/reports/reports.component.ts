@@ -58,19 +58,30 @@ export class ReportsComponent implements OnInit {
   }
 
   generateIssueReport(): void {
-    const issues = this.issueService.getIssues().filter((i) =>
-      this.applyFilterLogic(i.date, i.issueType === this.filters.wasteType)
-    );
-
-    this.tableHeaders = ['Issue ID', 'Issue Type', 'Location', 'Date'];
-    this.tableKeys = ['issueID', 'issueType', 'location', 'date'];
-    this.tableData = this.isAdmin ? issues : issues.filter(i => i.community === JSON.parse(localStorage.getItem('loggedInUser') || '{}').community);
-
-    // Chart Data
-    const issueCounts: any = {};
-    issues.forEach((i) => issueCounts[i.issueType] = (issueCounts[i.issueType] || 0) + 1);
-    this.chartData = Object.keys(issueCounts).map((type) => ({ name: type, value: issueCounts[type] }));
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser') || '{}');
+    const filterCommunity = this.isAdmin ? undefined : loggedInUser.community;
+  
+    this.issueService.getIssues(filterCommunity).subscribe({
+      next: (issues) => {
+        // Optionally filter by date & type
+        const filteredIssues = issues.filter((i: any) => 
+          this.applyFilterLogic(i.date, !this.filters.wasteType || i.issueType === this.filters.wasteType)
+        );
+  
+        this.tableHeaders = ['Issue ID', 'Issue Type', 'Location', 'Date'];
+        this.tableKeys = ['issueID', 'issueType', 'location', 'date'];
+        this.tableData = filteredIssues;
+  
+        const issueCounts: any = {};
+        filteredIssues.forEach((i: any) => issueCounts[i.issueType] = (issueCounts[i.issueType] || 0) + 1);
+        this.chartData = Object.keys(issueCounts).map((type) => ({ name: type, value: issueCounts[type] }));
+      },
+      error: () => {
+        console.error('Failed to fetch issues');
+      }
+    });
   }
+  
 
   generateRecyclingReport(): void {
     const pickups = this.historyService.getPickups().filter((p) => p.wasteTypes.includes('recyclable'));

@@ -33,35 +33,46 @@ export class HomeComponent implements OnInit{
   }
 
   loadDashboardData(): void {
-    const pickups = this.pickupService.getPickups();
-    this.totalPickups = pickups.length;
-
-    // Count waste types
-    const wasteCount: any = {
-      Household: 0,
-      Recyclable: 0,
-      'Paper/Plastic/Aluminium': 0,
-      Hazardous: 0,
-    };
-
-    pickups.forEach((pickup) => {
-      pickup.wasteTypes.forEach((type: string) => {
-        if (wasteCount[type]) wasteCount[type]++;
-      });
+    // Example: Fetch pickups for the logged-in user or community (optional filtering)
+    this.pickupService.getPickups().subscribe({
+      next: (pickups) => {
+        this.totalPickups = pickups.length;
+  
+        // Count waste types
+        const wasteCount: any = {
+          Household: 0,
+          Recyclable: 0,
+          'Paper/Plastic/Aluminium': 0,
+          Hazardous: 0,
+        };
+  
+        pickups.forEach((pickup: any) => {
+          pickup.wasteTypes.forEach((type: string) => {
+            // You might need to format the keys to match wasteCount keys
+            if (type === 'household') wasteCount.Household++;
+            if (type === 'recyclable') wasteCount.Recyclable++;
+            if (type === 'paperPlasticAluminium') wasteCount['Paper/Plastic/Aluminium']++;
+            if (type === 'hazardous') wasteCount.Hazardous++;
+          });
+        });
+  
+        // Prepare chart data
+        this.wasteTypeData = Object.keys(wasteCount).map((type) => ({
+          name: type,
+          value: wasteCount[type],
+        }));
+  
+        // Prepare table data
+        this.pickupData = pickups.map((p: any) => ({
+          community: p.community,
+          date: p.date,
+          time: p.time,
+          wasteTypes: p.wasteTypes.join(', '),
+        }));
+      },
+      error: (err) => {
+        console.error('Failed to load pickups:', err);
+      }
     });
-
-    // Prepare chart data
-    this.wasteTypeData = Object.keys(wasteCount).map((type) => ({
-      name: type,
-      value: wasteCount[type],
-    }));
-
-    // Prepare table data
-    this.pickupData = pickups.map((p) => ({
-      community: p.community,
-      date: p.date,
-      time: p.time,
-      wasteTypes: p.wasteTypes.join(', '),
-    }));
-  }
+  }  
 }

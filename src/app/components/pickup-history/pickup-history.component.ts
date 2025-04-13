@@ -7,7 +7,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 @Component({
   selector: 'app-pickup-history',
   templateUrl: './pickup-history.component.html',
-  imports:[CommonModule,FormsModule,NgxChartsModule]
+  imports: [CommonModule, FormsModule, NgxChartsModule],
 })
 export class PickupHistoryComponent implements OnInit {
   allPickups: any[] = [];
@@ -16,7 +16,7 @@ export class PickupHistoryComponent implements OnInit {
   filters = {
     startDate: '',
     endDate: '',
-    wasteType: ''
+    wasteType: '',
   };
 
   constructor(private historyService: HistoryService) {}

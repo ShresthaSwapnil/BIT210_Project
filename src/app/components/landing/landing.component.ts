@@ -1,7 +1,8 @@
 // landing.component.ts
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import * as AOS from 'aos';
 
 @Component({
   selector: 'app-landing',
@@ -12,24 +13,32 @@ import { CommonModule } from '@angular/common';
 })
 export class LandingComponent {
   constructor(private router: Router) {}
-  register(){
+  register() {
     this.router.navigate(['/register']);
+  }
+
+  ngOnInit(): void {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+    });
   }
 
   scrollToElement(elementId: string): void {
     const element = document.getElementById(elementId);
     if (element) {
-      element.scrollIntoView({ 
+      element.scrollIntoView({
         behavior: 'smooth',
-        block: 'start'
+        block: 'start',
       });
     }
   }
 
-  scrollToTop(): void{
+  scrollToTop(): void {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }
 }

@@ -1,17 +1,23 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PickupService {
-  private pickups = JSON.parse(localStorage.getItem('pickups') || '[]');
+  private apiUrl = 'http://localhost:5000/api/pickups';
 
-  schedulePickup(pickup: any): void {
-    this.pickups.push(pickup);
-    localStorage.setItem('pickups', JSON.stringify(this.pickups));
+  constructor(private http: HttpClient) {}
+
+  schedulePickup(pickup: any): Observable<any> {
+    return this.http.post(this.apiUrl, pickup);
   }
 
-  getPickups(): any[] {
-    return this.pickups;
+  getPickups(userId?: string, community?: string): Observable<any> {
+    let url = this.apiUrl;
+    if (userId) url += `?user=${userId}`;
+    if (community) url += `?community=${community}`;
+    return this.http.get(url);
   }
 }

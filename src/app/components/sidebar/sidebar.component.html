@@ -1,12 +1,19 @@
-<div class="h-screen w-64 bg-green-800 text-white flex flex-col">
-  <h2 class="text-xl font-bold text-center py-4 border-b border-green-600">सफाइ साथी</h2>
+<div
+  class="h-screen w-64 bg-gray-700 text-white flex flex-col border-r border-green-600 shadow-lg"
+>
+  <div class="flex flex-col items-center border-b border-green-600 py-4">
+    <img src="/SafaiSathi.png" class="size-12" />
+    <h2 class="text-xl font-bold text-center">सफाइ साथी</h2>
+  </div>
 
   <nav class="flex-grow">
-    <ul class="mt-4">
+    <ul class="mt-4 px-2 space-y-1">
       <li *ngFor="let link of links">
-        <a [routerLink]="link.path" 
-           routerLinkActive="bg-green-700 border-l-4 border-yellow-400 font-bold" 
-           class="block px-6 py-3 hover:bg-green-700 transition">
+        <a
+          [routerLink]="link.path"
+          routerLinkActive="bg-green-600 rounded-md shadow-md font-semibold"
+          class="block px-6 py-3 hover:bg-green-700 hover:rounded-md hover:shadow-md transition"
+        >
           {{ link.label }}
         </a>
       </li>
@@ -15,11 +22,14 @@
 
   <!-- User Profile Section -->
   <div class="border-t border-green-600 pt-3 pb-2 px-4">
-    <div *ngIf="user" class="mb-3">
+    <div *ngIf="user" class="mb-3 text-white">
       <p class="font-semibold text-lg">{{ user.username }}</p>
       <p class="text-green-200 text-sm">{{ user.email }}</p>
     </div>
-    <button (click)="logout()" class="w-full px-6 py-2 bg-red-500 rounded-lg hover:bg-red-600 transition">
+    <button
+      (click)="logout()"
+      class="w-full px-6 py-2 bg-red-500 rounded-lg hover:bg-red-600 transition text-white"
+    >
       Logout
     </button>
   </div>

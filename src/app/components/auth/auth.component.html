@@ -74,7 +74,28 @@
           [(ngModel)]="email"
           name="email"
           class="w-full px-4 py-2 border rounded-md"
+          email
+          required
+          #emailInput="ngModel"
+          [ngClass]="{
+            'border-red-500':
+              emailInput.invalid && (emailInput.dirty || emailInput.touched)
+          }"
         />
+        <!-- Email Validation Messages -->
+        <div
+          *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+          class="text-red-500 text-sm mt-1"
+        >
+          <div *ngIf="emailInput.errors?.['required']">
+            <!-- Use bracket notation for 'required' -->
+            Email is required.
+          </div>
+          <div *ngIf="emailInput.errors?.['email']">
+            <!-- Use bracket notation for 'email' -->
+            Please enter a valid email address.
+          </div>
+        </div>
 
         <label class="block mt-4 mb-2">Password:</label>
         <div class="relative">

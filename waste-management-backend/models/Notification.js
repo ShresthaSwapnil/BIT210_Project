@@ -8,6 +8,12 @@ const notificationSchema = new mongoose.Schema(
       enum: ["reminder", "announcement"],
       default: "reminder",
     },
+    community: { type: String, required: true },
+    createdBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     date: { type: Date, default: Date.now },
   },
   { timestamps: true }

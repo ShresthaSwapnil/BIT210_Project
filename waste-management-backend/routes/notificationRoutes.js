@@ -5,8 +5,13 @@ const Notification = require("../models/Notification");
 // Create notification or broadcast
 router.post("/", async (req, res) => {
   try {
-    const { message, type } = req.body;
-    const newNotification = new Notification({ message, type });
+    const { message, type, community, createdBy } = req.body;
+    const newNotification = new Notification({
+      message,
+      type,
+      community,
+      createdBy,
+    });
     await newNotification.save();
     res.status(201).json(newNotification);
   } catch (error) {

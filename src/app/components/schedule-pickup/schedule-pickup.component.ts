@@ -107,7 +107,7 @@ export class SchedulePickupComponent implements OnInit {
 
     const pickup = {
       user: loggedInUser._id,
-      community: this.community?.name || 'Unknown',
+      community: loggedInUser.community,
       date: this.selectedDate,
       time: this.selectedTime,
       wasteTypes: selectedWaste,

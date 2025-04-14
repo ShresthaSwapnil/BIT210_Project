@@ -29,6 +29,9 @@ export class ReportsComponent implements OnInit {
       localStorage.getItem('loggedInUser') || '{}'
     );
     this.isAdmin = loggedInUser.role === 'admin';
+    if (this.selectedReport === 'issueReported' && !this.isAdmin) {
+      this.selectedReport = 'pickupStatus';
+    }
     this.generateReport();
   }
 
@@ -40,6 +43,14 @@ export class ReportsComponent implements OnInit {
     if (this.selectedReport === 'pickupStatus') {
       this.generatePickupReport();
     } else if (this.selectedReport === 'issueReported') {
+      if (!this.isAdmin) {
+        console.warn('Access Denied: Issue reports are admin-only.');
+        this.tableData = [];
+        this.chartData = [];
+        this.tableHeaders = [];
+        this.tableKeys = [];
+        return;
+      }
       this.generateIssueReport();
     } else if (this.selectedReport === 'recyclingRates') {
       this.generateRecyclingReport();

@@ -20,7 +20,7 @@
           class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 transition duration-150 ease-in-out"
         >
           <option value="pickupStatus">Pickup Status</option>
-          <option value="issueReported">Issues Reported</option>
+          <option *ngIf="isAdmin" value="issueReported">Issues Reported</option>
           <option value="recyclingRates">Recycling Rates</option>
         </select>
       </div>
